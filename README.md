@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24429695.svg)](https://doi.org/10.5281/zenodo.24429695)
 
-Reproducible analysis code, clinical safety tables, processed summary matrices, figures, and manuscript files for:
+Reproducible analysis code, dual-curated clinical safety tables, processed summary matrices, figures, and supplementary data archives for:
 
 **Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody-Drug Conjugate Stomatitis and Re-Ranks Targets for Oral Cavity Carcinoma**
 
@@ -18,10 +18,10 @@ Reproducible analysis code, clinical safety tables, processed summary matrices, 
 - `clinical/adc_stomatitis_reconciled.tsv` — Side-by-side comparison of Wendi Dou, Xiang Yu, and Adjudicated Final curations with adjudication notes across all 66 ADCs (`Table S1d`).
 - `clinical/Dual_Blinded_Extractions_AB.xlsx` — Multi-sheet workbook containing Wendi Dou's extraction, Xiang Yu's blinded extraction, three-dataset parallel modeling comparison (`Table S1c`), 66-ADC side-by-side reconciliation (`Table S1d`), and inter-extractor agreement metrics (`Table S1e`).
 - `dl/hpa_ihc/manifest_509.tsv` — Image manifest and Human Protein Atlas (HPA) URLs for the 509 primary normal squamous IHC sections (`189` oral mucosa, `166` esophagus, `154` skin across 28 genes).
-- `scripts/` — End-to-end Python and R analytical, figure-generation, table-building, and manuscript-verification pipeline (`Makefile` orchestrates execution).
+- `scripts/` — End-to-end Python and R analytical, figure-generation, table-building, and archive-verification pipeline (`Makefile` orchestrates execution).
 - `results/` — Processed summary tables, Tobit model outputs, Ruifrok & Johnston `rgb2hed` DAB outputs (`hpa_ihc_dab_models.tsv`, `hpa_ihc_dab_genes.tsv`, `hpa_ihc_dab_param_grid.tsv`), leave-one-target-out predictions, surfaceome prioritization table, `dab_qc/` overlay examples, and machine-readable `numbers.json`.
 - `figures/` — Publication PDF and 300-dpi PNG figures (`Fig1`–`Fig5`).
-- `manuscript/` — Manuscript Markdown, formatted Word DOCX (`manuscript.docx`), `Supplementary_Tables.xlsx`, and `Supplementary_References.md`.
+- `manuscript/` — Multi-sheet `Supplementary_Tables.xlsx` (Tables S1–S8, README dictionary, and Supplementary References S1–S60) and `Supplementary_References.md`. *(The manuscript text is submitted separately for peer review; all analytical code, clinical data, and statistical outputs here correspond identically to the submitted study.)*
 
 ## Large Binary Data Accessions
 
@@ -40,9 +40,9 @@ NCBI GEO `GSE181919` (Choi et al.) and `GSE103322` (Puram et al.), TCGA-HNSC via
 
 All scripts resolve paths dynamically from the repository root with zero hardcoded local directories. Install Python dependencies (`pip install -r requirements.txt`) and R packages listed in `R_sessionInfo.txt`, then follow either reproduction track:
 
-1. **Track 1 — Reproduce all modeling, figures, tables, DOCX, and verification from included processed summary matrices (~25 min, including 5,000 LOTO permutations in `part5` and 7 × 10,000 FAERS target permutations via `export_fig_data.py` in `numbers`):**
+1. **Track 1 — Reproduce all modeling, figures, supplementary tables, and archive verification from included processed summary matrices (~25 min, including 5,000 LOTO permutations in `part5` and 7 × 10,000 FAERS target permutations via `export_fig_data.py` in `numbers`):**
    ```bash
-   make part3 part5 part4 numbers figures supp docx verify
+   make part3 part5 part4 numbers figures supp verify
    ```
    *(Notice `results/` includes all processed transcriptomic, proteomic, GTEx, HPA, FAERS, and `rgb2hed` DAB summary matrices, plus `results/surfaceome_genes.txt`, `results/fig_epi_markers.tsv`, and `results/supp_refs_metadata.json`, which `surfaceome_build.py`, `export_fig_data.py`, and `build_supp_tables.py` automatically preserve when raw UniProt / `.h5ad` / `dl/` intermediates are omitted.)*
 

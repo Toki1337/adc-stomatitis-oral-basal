@@ -2,9 +2,9 @@ ROOT := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 PYTHON = PYTHONPATH=$(ROOT)/scripts PYTHONUNBUFFERED=1 python3 -u
 LOGDIR = $(ROOT)/logs
 
-.PHONY: all part1 part3 part5 part4 numbers figures supp docx verify clean_logs
+.PHONY: all part1 part3 part5 part4 numbers figures supp verify clean_logs
 
-all: part1 part3 part5 part4 numbers figures supp docx verify
+all: part1 part3 part5 part4 numbers figures supp verify
 
 part1:
 	@mkdir -p $(LOGDIR)
@@ -39,9 +39,7 @@ figures:
 supp:
 	$(PYTHON) $(ROOT)/scripts/build_supp_tables.py
 
-docx:
-	$(PYTHON) $(ROOT)/scripts/build_docx.py
 
 verify:
-	$(PYTHON) $(ROOT)/scripts/verify_manuscript_numbers.py
+	$(PYTHON) $(ROOT)/scripts/verify_archive.py
 	Rscript -e "suppressPackageStartupMessages({library(ggplot2);library(dplyr);library(tidyr);library(readr);library(ggrepel);library(cowplot);library(scales)}); capture.output(sessionInfo(), file='$(ROOT)/R_sessionInfo.txt')"
