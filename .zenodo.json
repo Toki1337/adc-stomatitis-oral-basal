@@ -1,0 +1,33 @@
+{
+  "title": "Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody-Drug Conjugate Stomatitis and Re-Ranks Targets for Oral Cavity Carcinoma (Analysis Code and Curated Data)",
+  "description": "Reproducible Python and R analysis pipeline, dual-curated 66-ADC clinical monotherapy stomatitis tables, processed multi-omic summary matrices, deterministic Ruifrok-Johnston rgb2hed HPA normal squamous IHC optical density tables, leave-one-target-out calibration outputs, openFDA FAERS pharmacovigilance tables, and 420-gene OSCC surfaceome re-ranking archive.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Dou, Wendi",
+      "affiliation": "I.M. Sechenov First Moscow State Medical University (Sechenov University)",
+      "orcid": "0009-0008-2815-3726"
+    },
+    {
+      "name": "Yu, Xiang",
+      "affiliation": "I.M. Sechenov First Moscow State Medical University (Sechenov University)",
+      "orcid": "0009-0008-1383-1862"
+    },
+    {
+      "name": "Zhang, Shangmin",
+      "affiliation": "I.M. Sechenov First Moscow State Medical University (Sechenov University)",
+      "orcid": "0009-0003-1846-9333"
+    }
+  ],
+  "keywords": [
+    "antibody-drug conjugate",
+    "stomatitis",
+    "oral mucositis",
+    "single-cell RNA sequencing",
+    "basal keratinocytes",
+    "oral squamous cell carcinoma",
+    "Tobit regression",
+    "pharmacovigilance"
+  ]
+}

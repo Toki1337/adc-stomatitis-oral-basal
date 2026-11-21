@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or clinical dataset, please cite this repository and the accompanying article."
+title: "Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody-Drug Conjugate Stomatitis and Re-Ranks Targets for Oral Cavity Carcinoma"
+type: software
+license: MIT
+repository-code: "https://github.com/Toki1337/adc-stomatitis-oral-basal"
+authors:
+  - family-names: Dou
+    given-names: Wendi
+    orcid: "https://orcid.org/0009-0008-2815-3726"
+    affiliation: "I.M. Sechenov First Moscow State Medical University (Sechenov University), Moscow, Russia"
+  - family-names: Yu
+    given-names: Xiang
+    orcid: "https://orcid.org/0009-0008-1383-1862"
+    affiliation: "I.M. Sechenov First Moscow State Medical University (Sechenov University), Moscow, Russia"
+  - family-names: Zhang
+    given-names: Shangmin
+    orcid: "https://orcid.org/0009-0003-1846-9333"
+    affiliation: "I.M. Sechenov First Moscow State Medical University (Sechenov University), Moscow, Russia"
+keywords:
+  - antibody-drug conjugate
+  - stomatitis
+  - oral mucositis
+  - single-cell RNA sequencing
+  - basal keratinocytes
+  - oral squamous cell carcinoma
+  - Tobit regression

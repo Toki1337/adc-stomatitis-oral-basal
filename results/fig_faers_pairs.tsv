@@ -1,0 +1,11 @@
+drug1	drug2	contrast	pair_type	basal1	basal2	k1	n1	pct1	k2	n2	pct2	ror	lo	hi
+datopotamab deruxtecan	trastuzumab deruxtecan	"Dato-DXd vs T-DXd
+(both DXd)"	Higher vs lower oral basal	2.2911268536219533	0.34626990374848526	151	802	18.83	126	13081	0.96	23.85	18.59	30.6
+enfortumab vedotin	brentuximab vedotin	"EV vs BV
+(both MMAE)"	Higher vs lower oral basal	0.18974226678897285	0.0	57	3627	1.57	33	5331	0.62	2.56	1.67	3.94
+enfortumab vedotin	polatuzumab vedotin	"EV vs Pola
+(both MMAE)"	Higher vs lower oral basal	0.18974226678897285	0.006997943019808542	57	3627	1.57	9	1208	0.75	2.13	1.05	4.31
+trastuzumab emtansine	mirvetuximab soravtansine	"T-DM1 vs Mirv
+(DM1 vs DM4)"	Higher vs lower oral basal	0.34626990374848526	0.0	29	4369	0.66	5	1706	0.29	2.27	0.88	5.88
+datopotamab deruxtecan	sacituzumab govitecan	"Dato-DXd vs SG [same target]
+(DXd vs SN-38, TACSTD2)"	Same target (TACSTD2)	2.2911268536219533	2.2911268536219533	151	802	18.83	82	5477	1.5	15.26	11.52	20.21

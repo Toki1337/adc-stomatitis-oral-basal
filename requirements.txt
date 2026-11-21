@@ -1,0 +1,10 @@
+# Pinned runtime dependencies (verified 2026-11-17)
+# Optional upstream raw-count scRNA clustering (scripts/sc_williams*.py, scripts/williams_stats.py) additionally requires scanpy, anndata, harmonypy.
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.0.6
+statsmodels==0.15.0
+h5py==3.16.0
+openpyxl==3.1.5
+python-docx==1.2.0
+PyMuPDF>=1.24.0

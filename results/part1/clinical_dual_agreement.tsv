@@ -1,0 +1,8 @@
+metric	n	value	ci_lo	ci_hi	pct_agree	note	extractors	verified_by
+Status (yes / not_listed / no_data)	66	0.9528571428571428	0.8783185840707964	1.0	0.9696969696969697	Cohen's kappa (unweighted)	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Evaluability (evaluable vs no_data)	66	0.9662921348314607	0.887627695800227	1.0	0.9848484848484849	Cohen's kappa	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Source tier (all 66)	66	0.8388770216661581	0.7231667432421532	0.9380504616560832	0.8787878787878789	Cohen's kappa (unweighted)	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Source tier (both evaluable)	43	0.8644602048857368	0.7269841269841271	0.9670498084291188	0.9069767441860465	Cohen's kappa	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Censoring threshold_pct (linear weighted kappa)	28	0.752212389380531	0.4166197749196141	1.0	0.8928571428571428	Ordinal categories {5,10,15,20,25}	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Censoring threshold_pct (quadratic weighted kappa)	28	0.6961240310077519	0.30000000000000004	1.0	0.8928571428571428	Ordinal categories {5,10,15,20,25}	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu
+Numeric stom_any ICC(2,1)	14	0.9969291924093975	0.9819026509719851	0.9998380660036741		ICC(2,k)=0.9985; Spearman=0.9372; MAE=0.68 pp; max_diff=5.00 pp	Wendi Dou vs. Xiang Yu	Wendi Dou; Xiang Yu

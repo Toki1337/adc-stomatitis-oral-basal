@@ -1,0 +1,2 @@
+legacy_symbol	current_hgnc_symbol	tables_mapped	choi_malig_det	puram_malig_det	passes_25pct_pool	passes_50pct_screen
+PVRL4	NECTIN4	Williams GSE164241; Choi GSE181919; Puram GSE103322; TCGA-HNSC	0.3190406976744191	0.3307638402242466	True	False
