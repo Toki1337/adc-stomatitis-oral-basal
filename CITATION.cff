@@ -3,6 +3,7 @@ message: "If you use this code or clinical dataset, please cite this repository 
 title: "Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody-Drug Conjugate Stomatitis and Re-Ranks Targets for Oral Cavity Carcinoma"
 type: software
 license: MIT
+doi: "10.5281/zenodo.24429695"
 repository-code: "https://github.com/Toki1337/adc-stomatitis-oral-basal"
 authors:
   - family-names: Dou
