@@ -1,6 +1,6 @@
 # Absolute Oral Basal Keratinocyte Target Expression and ADC Stomatitis
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24429695.svg)](https://doi.org/10.5281/zenodo.24429695)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24429694.svg)](https://doi.org/10.5281/zenodo.24429694)
 
 Reproducible analysis code, dual-curated clinical safety tables, processed summary matrices, figures, and supplementary data archives for:
 
