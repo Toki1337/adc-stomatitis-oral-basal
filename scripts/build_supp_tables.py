@@ -188,10 +188,10 @@ for _, r in clin.iterrows():
     if not src:
         sid = get_or_add_ref('NO_CLIN_PUB', dict(
             source_type='No monotherapy safety report',
-            identifier='PubMed / openFDA search (2026-11-16)',
-            effective_or_year='2026-11-16',
+            identifier='PubMed / openFDA search (2026-11)',
+            effective_or_year='2026-11',
             doi_or_set_id='N/A',
-            citation='Systematic PubMed and openFDA drug-label search conducted November 16, 2026 identified no peer-reviewed monotherapy clinical safety publication for each of the 12 excluded investigational ADCs citing S17 in Table S1.',
+            citation='Systematic PubMed and openFDA drug-label search conducted November 2026 identified no peer-reviewed monotherapy clinical safety publication for each of the 12 excluded investigational ADCs citing S17 in Table S1.',
         ))
         row_ref_ids.append(sid)
     elif 'FDA label' in src:

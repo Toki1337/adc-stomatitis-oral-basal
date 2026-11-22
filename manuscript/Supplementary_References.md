@@ -34,7 +34,7 @@ Numbered clinical safety sources corresponding to the Supplementary Reference co
 
 **S16.** Rudin, C. M. et al. Ifinatamab Deruxtecan in Patients With Extensive-Stage Small Cell Lung Cancer: Primary Analysis of the Phase II IDeate-Lung01 Trial. *J. Clin. Oncol.* **44**, 261–273 (2026). PMID 41086386 (PMC12834294); doi:10.1200/JCO-25-02142.
 
-**S17.** Systematic PubMed and openFDA drug-label search conducted November 16, 2026 identified no peer-reviewed monotherapy clinical safety publication for each of the 12 excluded investigational ADCs citing S17 in Table S1.
+**S17.** Systematic PubMed and openFDA drug-label search conducted November 2026 identified no peer-reviewed monotherapy clinical safety publication for each of the 12 excluded investigational ADCs citing S17 in Table S1.
 
 **S18.** Palanca-Wessels, M. C. et al. Safety and activity of the anti-CD79B antibody-drug conjugate polatuzumab vedotin in relapsed or refractory B-cell non-Hodgkin lymphoma and chronic lymphocytic leukaemia: a phase 1 study. *Lancet Oncol.* **16**, 704–715 (2015). PMID 25925619; doi:10.1016/S1470-2045(15)70128-2.
 

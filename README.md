@@ -4,7 +4,7 @@
 
 Reproducible analysis code, dual-curated clinical safety tables, processed summary matrices, figures, and supplementary data archives for:
 
-**Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody-Drug Conjugate Stomatitis and Re-Ranks Targets for Oral Cavity Carcinoma**
+**Absolute Target Expression in Normal Oral Basal Keratinocytes Predicts Antibody–Drug Conjugate Stomatitis and Re-Ranks Oral Cavity Carcinoma Targets**
 
 **Authors:** Wendi Dou†*, Xiang Yu†, Shangmin Zhang† (†Equal contribution; *Corresponding author: dou_v@student.sechenov.ru)  
 **Affiliation:** I.M. Sechenov First Moscow State Medical University (Sechenov University), 8/2 Trubetskaya St., Moscow, 119991, Russia
