@@ -1,0 +1,15 @@
+drug	target_gene	payload_class	pclass	W_basal	n_reports	n_oral	oral_pct	ROR_whole_FAERS	ROR_ci_lo	ROR_ci_hi	PRR	BCPNN_IC	BCPNN_IC025	signal_IC025_pos
+sacituzumab govitecan	TACSTD2	SN-38	topoI	2.2911	5105	76	1.49	2.64	2.11	3.32	2.62	1.37	0.99	YES
+datopotamab deruxtecan	TACSTD2	DXd	topoI	2.2911	743	138	18.57	39.95	33.2	48.06	32.71	4.87	4.59	YES
+trastuzumab deruxtecan	ERBB2	DXd	topoI	0.3463	12193	107	0.88	1.55	1.28	1.87	1.54	0.62	0.3	YES
+trastuzumab emtansine	ERBB2	DM1	tubulin	0.3463	4255	27	0.63	1.12	0.76	1.63	1.12	0.16	-0.49	NO
+enfortumab vedotin	NECTIN4	MMAE	tubulin	0.1897	3185	43	1.35	2.39	1.77	3.23	2.38	1.23	0.72	YES
+telisotuzumab vedotin	MET	MMAE	tubulin	0.1839	66	0	0.0					-0.81	-11.13	NO
+tisotumab vedotin	F3	MMAE	tubulin	0.0714	811	5	0.62	1.08	0.45	2.61	1.08	0.11	-1.46	NO
+gemtuzumab ozogamicin	CD33	calicheamicin	DNA	0.0114	329	5	1.52	2.7	1.12	6.53	2.67	1.21	-0.35	NO
+polatuzumab vedotin	CD79B	MMAE	tubulin	0.007	1088	8	0.74	1.3	0.65	2.6	1.29	0.35	-0.87	NO
+belantamab mafodotin	TNFRSF17	MMAF	tubulin	0.007	1978	2	0.1	0.18	0.04	0.71	0.18	-2.23	-4.83	NO
+inotuzumab ozogamicin	CD22	calicheamicin	DNA	0.0021	857	9	1.05	1.86	0.96	3.58	1.85	0.82	-0.32	NO
+loncastuximab tesirine	CD19	PBD	DNA	0.0006	275	1	0.36	0.64	0.09	4.55	0.64	-0.46	-4.24	NO
+mirvetuximab soravtansine	FOLR1	DM4	tubulin	0.0	1641	5	0.3	0.53	0.22	1.29	0.54	-0.84	-2.4	NO
+brentuximab vedotin	TNFRSF8	MMAE	tubulin	0.0	4525	22	0.49	0.85	0.56	1.3	0.86	-0.22	-0.94	NO

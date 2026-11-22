@@ -25,16 +25,18 @@ Reproducible analysis code, dual-curated clinical safety tables, processed summa
 
 ## Large Binary Data Accessions
 
-Two large binary inputs exceed standard Git file-size limits and are omitted from the lightweight repository; each can be regenerated deterministically from public sources:
+Three large raw/binary inputs exceed standard Git file-size limits and are omitted from the lightweight repository; each can be regenerated deterministically from public sources:
 
 1. **Processed oral epithelial AnnData (`results/williams_epi.h5ad`, ~159 MB):**
    Download raw count matrices for healthy buccal mucosa and gingiva donors from NCBI GEO `GSE164241` (Williams et al., *Cell* 2021), then run `scripts/sc_williams.py`, `scripts/sc_williams_epi.py`, and `scripts/williams_stats.py`. Pre-computed compartment summary matrices (`results/williams_kc_stats.tsv.gz`) are included directly in `results/`.
 2. **Raw HPA normal squamous IHC JPEGs (`dl/hpa_ihc/raw_jpg/`, 509 images):**
    Fetch directly from the HPA image URLs listed in `dl/hpa_ihc/manifest_509.tsv`. Pre-computed slide-level and gene-level `rgb2hed` optical density tables (`results/part1/hpa_ihc_dab_slides.tsv`, `hpa_ihc_dab_genes.tsv`, `hpa_ihc_dab_models.tsv`) are included in `results/`.
+3. **Raw FDA FAERS Quarterly ASCII Extracts (`dl/faers/ascii_extract/`, 56 quarters, `2012Q4–2026Q3`):**
+   Stream-download and deduplicate directly from FDA (`fis.fda.gov`) via `scripts/faers_ascii_extract.py` and `scripts/faers_ascii_clean.py`. Pre-computed deduplicated cohort counts, whole-FAERS background totals, and READUS-PV baseline metrics (`results/faers_counts.tsv`, `results/faers_background.tsv`, `results/faers_readus_baseline.tsv`) are included directly in `results/`.
 
 ### Public Multi-Omic Accessions
 
-NCBI GEO `GSE181919` (Choi et al.) and `GSE103322` (Puram et al.), TCGA-HNSC via UCSC Xena / NCI GDC, CPTAC-HNSCC oral cavity via PDC000221 / LinkedOmics, GTEx v8, HPA v26.0 Single Cell Type & IHC tables, UniProtKB/Swiss-Prot reviewed human proteome, DepMap 24Q4 CRISPR Chronos, openFDA Drug Label & FAERS APIs, and PubMed Central full texts.
+NCBI GEO `GSE181919` (Choi et al.) and `GSE103322` (Puram et al.), TCGA-HNSC via UCSC Xena / NCI GDC, CPTAC-HNSCC oral cavity via PDC000221 / LinkedOmics, GTEx v8, HPA v26.0 Single Cell Type & IHC tables, UniProtKB/Swiss-Prot reviewed human proteome, DepMap 24Q4 CRISPR Chronos, openFDA Drug Label API, FDA FAERS Quarterly ASCII Data Extracts (`2012Q4–2026Q3`; `fis.fda.gov`), and PubMed Central full texts.
 
 ## Reproduction
 

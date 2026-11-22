@@ -731,7 +731,7 @@ p4c <- ggplot(faers_p, aes(x = outcome_lab, y = beta, color = is_oral)) +
   coord_flip() +
   scale_color_manual(values = c(`TRUE` = "#D55E00", `FALSE` = "grey45"), guide = "none") +
   labs(title = "FAERS: oral mucositis replicates specifically",
-       subtitle = "NB2 log-rate slope per log₂ oral basal unit (n=15 ADCs)",
+       subtitle = "NB2 log-rate slope per log₂ oral basal unit (n=14 ADCs)",
        x = NULL, y = "Log-rate slope per log₂ oral basal unit (95% CI)") +
   theme_pub(base_size = 7.1) +
   theme(axis.text.y = element_text(size = 6.0, lineheight = 0.92))

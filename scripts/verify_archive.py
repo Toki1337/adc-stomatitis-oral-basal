@@ -79,7 +79,10 @@ else:
         'Table_S6b_LOTO_Exact_Endpoints',
         'Table_S6c_Calib_Summary',
         'Table_S7_OSCC_420_Surfaceome',
-        'Table_S8_FAERS_Models',
+        'Table_S8a_FAERS_Models',
+        'Table_S8b_FAERS_Drugs_Disprop',
+        'Table_S8c_FAERS_Sensitivity',
+        'Table_S8d_FAERS_READUS_Flow',
         'Supplementary_References',
     ]
     for sh in required_sheets:

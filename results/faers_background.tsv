@@ -1,0 +1,15 @@
+metric	value
+quarter_start	2012Q4
+quarter_end	2026Q3
+n_quarters	56
+n_deleted_caseids	99817
+raw_faers_rows	20957628
+after_delete_rows	20886712
+dedup_total_cases	17994015
+dedup_oral	102301
+dedup_neutropenia	199199
+dedup_neuropathy	99631
+dedup_skin	554769
+dedup_ocular	269661
+dedup_ild	62630
+dedup_diarrhea	563518

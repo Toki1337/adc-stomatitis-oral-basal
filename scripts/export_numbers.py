@@ -31,6 +31,10 @@ loto_exact = pd.read_csv(R + 'part5_loto_exact_endpoints.tsv', sep='\t')
 loto_df = pd.read_csv(R + 'part5_loto_predictions.tsv', sep='\t')
 faers = pd.read_csv(R + 'fig_faers_summary.tsv', sep='\t').set_index('outcome')
 faers_pairs = pd.read_csv(R + 'fig_faers_pairs.tsv', sep='\t')
+faers_disprop = pd.read_csv(R + 'faers_per_drug_disprop.tsv', sep='\t')
+faers_sens = pd.read_csv(R + 'faers_sensitivity.tsv', sep='\t')
+faers_bg = pd.read_csv(R + 'faers_background.tsv', sep='\t').set_index('metric')['value'].to_dict()
+faers_readus = pd.read_csv(R + 'faers_readus_baseline.tsv', sep='\t')
 p4 = pd.read_csv(R + 'part4_final_ranking.tsv', sep='\t', index_col=0)
 surf = pd.read_csv(R + 'surfaceome_genes.txt', header=None)[0].tolist()
 
@@ -189,6 +193,10 @@ nums = {
     ].to_dict(orient='records'),
     'faers': faers.reset_index().to_dict(orient='records'),
     'faers_pairs': faers_pairs.to_dict(orient='records'),
+    'faers_per_drug_disprop': faers_disprop.to_dict(orient='records'),
+    'faers_sensitivity': faers_sens.to_dict(orient='records'),
+    'faers_background': faers_bg,
+    'faers_readus_baseline': faers_readus.to_dict(orient='records'),
     'surfaceome': {
         'n_surfaceome': int(len(surf)),
         'n_oscc_expressed': int(len(p4)),

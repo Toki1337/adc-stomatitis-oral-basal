@@ -35,6 +35,19 @@ p3_axes = pd.read_csv(R + 'part3_axes.tsv', sep='\t')
 p5 = pd.read_csv(R + 'part5_loto_predictions.tsv', sep='\t')
 p5_exact = pd.read_csv(R + 'part5_loto_exact_endpoints.tsv', sep='\t')
 faers_sum = pd.read_csv(R + 'fig_faers_summary.tsv', sep='\t')
+faers_disprop = pd.read_csv(R + 'faers_per_drug_disprop.tsv', sep='\t')
+faers_sens = pd.read_csv(R + 'faers_sensitivity.tsv', sep='\t')
+faers_readus = pd.read_csv(R + 'faers_readus_baseline.tsv', sep='\t')
+faers_pairs = pd.read_csv(R + 'fig_faers_pairs.tsv', sep='\t')
+faers_pair_rows = pd.DataFrame([
+    dict(
+        category='Pairwise Oral ROR Contrast',
+        item=f"{r.drug1} vs. {r.drug2} ({r.pair_type})",
+        value=f"ROR {r.ror:.2f} (95% CI {r.lo:.2f}–{r.hi:.2f}); {int(r.k1)}/{int(r.n1):,} ({r.pct1:.2f}%) vs. {int(r.k2)}/{int(r.n2):,} ({r.pct2:.2f}%)",
+    )
+    for _, r in faers_pairs.iterrows()
+])
+faers_readus_full = pd.concat([faers_readus, faers_pair_rows], ignore_index=True)
 p4 = pd.read_csv(R + 'part4_final_ranking.tsv', sep='\t', index_col=0).reset_index().rename(columns={'index': 'gene'})
 p4['pass_vital_15tpm'] = p4['vital_max_tpm'] <= 15
 p4 = p4.sort_values(['n_pass', 'grid_pass', 'pass_vital_15tpm', 'tum_choi'], ascending=[False, False, False, False])
@@ -278,9 +291,9 @@ s3c_protocol = pd.DataFrame([
     dict(
         plan_item='Y2 & Negative Controls (FAERS)',
         prespecified_plan='FAERS reporting proportion of oral-mucositis PTs (STOMATITIS, MUCOSAL INFLAMMATION, MOUTH ULCERATION, APHTHOUS ULCER, GLOSSITIS, ORAL MUCOSAL ERYTHEMA, ORAL MUCOSAL BLISTERING) among reports where the ADC is the only suspect drug and no other antineoplastic is listed; negative controls peripheral neuropathy and neutropenia PTs.',
-        implemented_analysis='Exposure-offset Negative-Binomial (NB2) count regression (LR test + 10,000 12-target permutations, alongside Test 1 Spearman and unweighted empirical log-odds OLS sensitivity in Table S8) across 15 ADCs (>=50 reports; 12 unique targets) excluding 69 specified co-reported antineoplastic/anti-HER2 drugs (AND NOT list; drug-characterization role not filtered separately).',
-        output_location='Results (Leave-One-Target-Out Calibration and Pharmacovigilance Replication); Methods (OpenFDA FAERS Pharmacovigilance Analysis); Figure 4C–D, Table S8',
-        status='Deviated slightly (exclusion list vs suspect-only role flag; documented)',
+        implemented_analysis='Exact FDA FAERS Quarterly ASCII extracts (56 quarters, 2012Q4–2026Q3; 17,994,015 deduplicated cases after removing 99,817 FDA-deleted case IDs and retaining latest CASEVERSION/FDA_DT). Primary cohort restricts strictly to deduplicated sole-suspect (ROLE_COD=PS with zero SS) monotherapy ADC reports excluding all co-reported antineoplastic/anti-HER2 agents (14 FDA-approved ADCs, 12 unique targets, 37,051 cases, 448 oral events; disitamab vedotin had 0 PS reports), evaluated via payload-adjusted exposure-offset NB2 regression (10,000 target permutations), unadjusted Spearman, equal-weight OLS, whole-FAERS ROR/PRR/BCPNN IC025, 2 prespecified + 4 exploratory negative controls, and 6 READUS-PV sensitivity cohorts (Tables S8a–d).',
+        output_location='Results (Basal Expression Generalizes to Held-Out Targets and Pharmacovigilance); Methods (Statistical Modeling, Calibration, FAERS, and Surfaceome Re-Ranking); Figure 4C–D, Tables S8a–d',
+        status='Implemented as planned (expanded with full FDA deduplication, whole-FAERS ROR/IC025, 4 exploratory controls, and READUS-PV sensitivity suite)',
     ),
     dict(
         plan_item='Primary Predictor (X) & Replications',
@@ -313,7 +326,7 @@ s3c_protocol = pd.DataFrame([
     dict(
         plan_item='Test 5 & Part 2 (OSCC window & surfaceome)',
         prespecified_plan='Test 5: Y2 replication of tests 1-2; negative-control outcomes. Part 2: for ADC targets and surfaceome genes, tumour (TCGA oral, CPTAC tumour proteome, malignant cells in GSE103322 / GSE181919) vs normal oral basal keratinocytes; predicted stomatitis liability from the part-1 model; window = tumour excess over predicted liability; DepMap OSCC lines for model selection.',
-        implemented_analysis='FAERS Tests 1–2 & controls run (n=15 ADCs); 420-gene OSCC surfaceome (with PVRL4 harmonized to NECTIN4) profiled across Choi/Puram/TCGA/CPTAC/GTEx-4 & 24-organ/GTEx-54/DepMap 24Q4 (1,178 cell lines) using coherent full-cohort predictions & LOTO sensitivity columns.',
+        implemented_analysis='FAERS Tests 1–2 & controls run on FDA-deduplicated sole-suspect monotherapy quarterly ASCII extracts (2012Q4–2026Q3, n=14 FDA-approved ADCs across 12 unique targets, 37,051 cases); 420-gene OSCC surfaceome (with PVRL4 harmonized to NECTIN4) profiled across Choi/Puram/TCGA/CPTAC/GTEx-4 & 24-organ/GTEx-54/DepMap 24Q4 (1,178 cell lines) using coherent full-cohort predictions & LOTO sensitivity columns.',
         output_location='Results (Leave-One-Target-Out Calibration and Pharmacovigilance Replication; OSCC Surfaceome Coupling and Exploratory Target Re-Ranking); Methods (Surfaceome Curation); Figure 4C–D, Figure 5, Table 3, Table S7',
         status='Deviated: DepMap used for pan-cell-line common-essential screening (1,178 lines) instead of OSCC-line model selection; window computed as tumor − oral basal Δlog₂ alongside 4-criterion re-ranking & 3x3 grids',
     ),
@@ -394,9 +407,18 @@ readme_rows = [
     dict(section='WORKBOOK INDEX', sheet_or_table='Table_S7_OSCC_420_Surfaceome', column_or_title='Table S7: Complete Re-Ranking of 420 OSCC-Expressed Surfaceome Proteins',
          units='log2(CP10K+1), %, TPM, log2 fold change, Chronos score, /9 grid',
          description='Multi-omic OSCC surfaceome prioritization table across all 420 dual-cohort expressed surface proteins (after PVRL4-to-NECTIN4 harmonization), including predicted stomatitis with 95% CIs/PIs, LOTO sensitivity estimates, GTEx 4-organ/24-organ/54-tissue maxima, 3x3 stability counts, and DepMap 24Q4 essentiality.'),
-    dict(section='WORKBOOK INDEX', sheet_or_table='Table_S8_FAERS_Models', column_or_title='Table S8: OpenFDA FAERS Pharmacovigilance Models (15 ADCs, 12 Targets)',
-         units='log-rate beta, rate ratio, LR (df=1), P (Wald, LR, 10,000-perm)',
-         description='Primary payload-adjusted exposure-offset NB2 count regression alongside unadjusted Spearman and equal-weight empirical log-odds OLS sensitivity models across oral mucositis/stomatitis and 6 control toxicities.'),
+    dict(section='WORKBOOK INDEX', sheet_or_table='Table_S8a_FAERS_Models', column_or_title='Table S8a: FDA FAERS Quarterly ASCII Pharmacovigilance Models (14 FDA-Approved ADCs, 12 Targets)',
+         units='log-rate beta, rate ratio, LR (df=1), P (Wald, LR, 10,000-perm), Spearman rho',
+         description='Primary payload-adjusted exposure-offset NB2 count regression alongside unadjusted Spearman and equal-weight empirical log-odds OLS sensitivity models across oral mucositis/stomatitis and 6 control toxicities in deduplicated sole-suspect monotherapy cases (2012Q4–2026Q3, N=37,051).'),
+    dict(section='WORKBOOK INDEX', sheet_or_table='Table_S8b_FAERS_Drugs_Disprop', column_or_title='Table S8b: Per-ADC Whole-FAERS Disproportionality (ROR, PRR, BCPNN IC025)',
+         units='counts, %, ROR (95% CI), PRR, BCPNN IC / IC025',
+         description='Per-ADC deduplicated sole-suspect monotherapy case counts, oral mucositis proportions, and whole-FAERS disproportionality metrics (ROR, PRR, BCPNN IC and IC025 against 17,994,015 deduplicated 2012Q4–2026Q3 background cases) across all 14 FDA-approved ADCs.'),
+    dict(section='WORKBOOK INDEX', sheet_or_table='Table_S8c_FAERS_Sensitivity', column_or_title='Table S8c: READUS-PV FAERS Sensitivity Suite (7 Cohorts)',
+         units='log-rate beta, LR (df=1), 10,000-perm P, Spearman rho, pairwise ROR',
+         description='Oral mucositis regression and pairwise ROR stability across primary sole-suspect monotherapy, all-PS monotherapy, HCP-only, serious-only, non-HNSCC/radiotherapy indications, secondary demographic/event/drug/PT deduplication, and unexcluded all-PS reports.'),
+    dict(section='WORKBOOK INDEX', sheet_or_table='Table_S8d_FAERS_READUS_Flow', column_or_title='Table S8d: READUS-PV Case Attrition Funnel, Baseline Demographics, and Pairwise ROR Contrasts',
+         units='case counts, median (IQR) years, %, ROR (95% CI)',
+         description='Official FDA DELETE and CASEID deduplication attrition funnel (2012Q4–2026Q3), primary sole-suspect monotherapy cohort demographics (age, sex, reporter qualification, seriousness, top countries), and all 5 pairwise oral ROR contrasts.'),
     dict(section='WORKBOOK INDEX', sheet_or_table='Supplementary_References', column_or_title='Supplementary References (S1-S60)',
          units='Citations (BLA/set_id, PMID/PMCID/DOI)',
          description='Numbered clinical safety sources corresponding to supp_ref_id in Table S1 across all 66 ADCs.'),
@@ -442,9 +464,9 @@ readme_rows = [
     dict(section='COLUMN DICTIONARY', sheet_or_table='Table_S7_OSCC_420_Surfaceome', column_or_title='depmap_common_essential / depmap_median_chronos / depmap_frac_lt_neg05',
          units='Boolean, Chronos gene effect, fraction (0-1)',
          description='DepMap Public 24Q4 CRISPR dependency summary across 1,178 cancer cell lines: common-essential flag, median Chronos score, and fraction of cell lines with Chronos < -0.5.'),
-    dict(section='COLUMN DICTIONARY', sheet_or_table='Table_S8_FAERS_Models', column_or_title='beta / rate_ratio_per_log2 / nb_alpha / ols_beta / ols_LR / p_ols_perm',
-         units='Log-rate slope, rate ratio, dispersion, OLS logit slope & LR',
-         description='Exposure-offset NB2 count regression slope (beta, per log2 oral basal unit), rate ratio (exp(beta)), overdispersion (nb_alpha), and equal-weight empirical log-odds OLS sensitivity model (ols_beta, ols_LR, 10,000-resample 12-target permutation p_ols_perm).'),
+    dict(section='COLUMN DICTIONARY', sheet_or_table='Table_S8a / S8b / S8c', column_or_title='beta / rate_ratio_per_log2 / nb_alpha / ols_beta / p_ols_perm / ROR_whole_FAERS / BCPNN_IC025',
+         units='Log-rate slope, rate ratio, dispersion, ROR, PRR, BCPNN IC025',
+         description='Exposure-offset NB2 count regression slope (beta, per log2 oral basal unit), rate ratio (exp(beta)), overdispersion (nb_alpha), equal-weight empirical log-odds OLS sensitivity (ols_beta, ols_LR, 10,000-resample 12-target permutation p_ols_perm), and whole-FAERS disproportionality (ROR, PRR, and Bayesian Confidence Propagation Neural Network information component lower 95% bound BCPNN_IC025 > 0 threshold).'),
 ]
 readme_df = pd.DataFrame(readme_rows)
 
@@ -474,7 +496,10 @@ with pd.ExcelWriter(out_xlsx, engine='openpyxl') as writer:
     p5_exact.to_excel(writer, sheet_name='Table_S6b_LOTO_Exact_Endpoints', index=False)
     p5_sum.to_excel(writer, sheet_name='Table_S6c_Calib_Summary', index=False)
     p4_export.to_excel(writer, sheet_name='Table_S7_OSCC_420_Surfaceome', index=False)
-    faers_sum.to_excel(writer, sheet_name='Table_S8_FAERS_Models', index=False)
+    faers_sum.to_excel(writer, sheet_name='Table_S8a_FAERS_Models', index=False)
+    faers_disprop.to_excel(writer, sheet_name='Table_S8b_FAERS_Drugs_Disprop', index=False)
+    faers_sens.to_excel(writer, sheet_name='Table_S8c_FAERS_Sensitivity', index=False)
+    faers_readus_full.to_excel(writer, sheet_name='Table_S8d_FAERS_READUS_Flow', index=False)
     supp_refs_df.to_excel(writer, sheet_name='Supplementary_References', index=False)
     writer.book.properties.creator = ''
     writer.book.properties.title = 'Supplementary Tables S1-S8 and Supplementary References (ADC Stomatitis)'

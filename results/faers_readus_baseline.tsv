@@ -1,0 +1,15 @@
+category	item	value
+Database & Period	FDA FAERS Quarterly ASCII Extracts (56 quarters)	2012Q4–2026Q3
+Whole-FAERS Deduplication	Raw DEMO rows -> after official DELETE -> unique CASEID	20,957,628 -> 20,886,712 -> 17,994,015 (removed 99,817 deleted case IDs)
+ADC Case Attrition (Step 1)	Raw FAERS records mentioning >=1 of 15 marketed ADCs	90,816
+ADC Case Attrition (Step 2)	After removing FDA-deleted case IDs & CASEID deduplication	73,044 unique cases (1,167 deleted rows removed)
+ADC Case Attrition (Step 3)	Primary Suspect (ROLE_COD = PS) ADC cases	50,201 unique cases
+ADC Case Attrition (Step 4)	Primary Suspect + no co-reported antineoplastic/anti-HER2 drug	37,840 unique cases
+ADC Case Attrition (Step 5, Primary)	Sole Suspect (PS with zero SS) + no co-reported antineoplastic (14 FDA-approved ADCs >=50 reports; disitamab vedotin 0 PS)	37,051 unique cases
+Secondary Duplicate Check	Exact demographic/date/drug/PT duplicates flagged in sensitivity	1,404 cases among all deduplicated ADC records
+Primary Cohort Age	Median (IQR), years (n = 18,419 with reported age)	60.0 (49.0–70.0)
+Primary Cohort Sex	Female / Male / Unknown	23,006 (62.1%) / 7,539 (20.3%) / 6,506 (17.6%)
+Primary Cohort Reporter	Healthcare professional (MD/PH/OT) / Consumer (CN) / Unknown	21,388 (57.7%) / 7,452 (20.1%) / 8,211 (22.2%)
+Primary Cohort Seriousness	Any serious outcome (OUTC) / Hospitalization / Death	29,692 (80.1%) / 8,802 (23.8%) / 9,224 (24.9%)
+Primary Cohort Top Countries	Top 6 reporting countries	US: 14,411 (38.9%); JP: 4,201 (11.3%); CN: 2,042 (5.5%); CA: 1,858 (5.0%); FR: 1,851 (5.0%); IN: 1,596 (4.3%)
+Primary Cohort Quarter Span	First to last quarter with primary cases	2012Q4–2026Q3
